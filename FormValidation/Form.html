@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: #2511db;
+            font-family: cursive;
+        }
+        .form{
+            width: 80vh;
+            height: 95vh;
+            background-color: aliceblue;
+            margin: auto auto;
+            border-radius: 20px 20px 20px 20px;
+        }
+        .field{
+            background-color: white;
+            margin: 5% 20%;
+        }
+        .heading{
+            border: 1px solid blue;
+            text-align: center;
+            padding: 15px;
+            border-radius: 20px 20px 0px 0px ;
+            background-color: rgb(197, 29, 29);
+            color: aliceblue;
+            font-family: cursive;
+        }
+        .fields{
+            font-size: 20px;
+            padding: 5px;
+            margin: 1px 0px 2px 40px;
+            border-radius: 6px;
+            font-family: cursive;
+            width: 80%;
+        }
+        .text{
+            font-size: 20px;
+            margin: 1px 10px 5px 41px;
+        }
+        .btn{
+            width: 30px;
+            height: 30px;
+            border-radius: 16px;
+            background-color: rgb(167, 167, 172);
+        }
+        .agree{
+            padding: 10px;
+            margin-left: 26px;
+        }
+        .signup-btn {
+    font-size: 25px;
+    padding: 6px 60px;
+    font-family: cursive;
+    border-radius: 15px;
+    margin-left: 30%;
+    background: linear-gradient(135deg, #ff5252, hsl(0, 100%, 67%));
+    color: antiquewhite;
+    transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+    background: linear-gradient(135deg, hsl(0, 100%, 63%), #ff5252);
+    color: white;
+}
+
+
+    </style>
+    <div class="form">
+        <h1 class="heading">Signup</h1>
+    <form action="">
+        <div class="text username-head">
+            <span>Username</span>
+
+        </div>
+        <input type="text" placeholder="Enter Username" class="fields username" >
+
+        <div class="text email-head">
+            <span>Email Id</span></div> 
+        <input type="email" placeholder="Enter Email Id" class="fields email" data-t="email">
+
+
+        <div class="text contact-head"><span>Contact No.</span></div>
+        <input type="text" placeholder="Enter Contact Number" class="fields contact" data-t="contact">
+
+
+        <div class="text pass-head"><span>Password</span></div>
+        <input type="password"  placeholder="Enter Password" class="fields password" data-t="password">
+        <button type="button" class="btn show-pass">👁</button>
+
+
+        <div class="text conf-pass-head"><span>Confirm Password</span></div>
+        <input type="password" class="fields c-password" placeholder="Confirm Password">
+        <button type="button" class="btn show-conf-pass">👁</button>
+
+    
+    <div class="agree">
+    <input type="checkbox" class="checkboc">
+    <span>I Agree With The Terms And Condition</span>
+    </div>
+    <button class="signup-btn" type="submit">Signup</button>
+    </div>
+    </form>
+</body>
+</html>
+<script src="form.js"></script>

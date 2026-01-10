@@ -1,0 +1,56 @@
+.top{
+            background-color: rgb(230, 178, 101);
+            color: blue;
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .bottom{
+            background-color: rgb(42, 205, 69);
+            color: rgb(249, 249, 255);
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .left{
+            background-color: rgb(36, 42, 217);
+            color: rgb(182, 108, 89);
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .right{
+            background-color: rgb(0, 0, 0);
+            color: blue;
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .front{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .back{
+            background-color: rgb(55, 54, 86);
+            color: rgb(195, 255, 0);
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .up{
+            background-color: rgb(190, 136, 136);
+            color: rgba(195, 255, 83, 0.507);
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .down{
+            background-color: rgb(255, 0, 0);
+            color: rgb(0, 255, 208);
+            border: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Products Page</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f4f4f4;
+    }
+
+    /* Navbar */
+    nav {
+        background: #222;
+        padding: 15px;
+    }
+
+
+    nav div  {
+       color: aqua;
+    }
+
+    /* Products Section */
+    .products {
+        padding: 30px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+
+    .product {
+        background: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .product h3 {
+        margin-bottom: 10px;
+    }
+
+    .product p {
+        color: #555;
+    }
+    .hidden{
+        display: none;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div>Search<input type="text" style="margin-left: 10px;" class="input"></div>
+</nav>
+
+<!-- Products -->
+<div class="products">
+    <div class="product" category="E"><h3>Television</h3><p>₹999</p></div>
+    <div class="product" category="E"><h3>Laptop</h3><p>₹899</p></div>
+    <div class="product" category="C"><h3>Shirt</h3><p>₹99</p></div>
+    <div class="product" category="A"><h3>Night Lamp</h3><p>₹49</p></div>
+    <div class="product" category="A"><h3>Shoes</h3><p>₹799</p></div>
+    <div class="product" category="E"><h3>Laptop Cover</h3><p>₹699</p></div>
+    <div class="product" category="C"><h3>Jacket</h3><p>₹1599</p></div>
+    <div class="product" category="A"><h3>PS5</h3><p>₹1099</p></div>
+    <div class="product" category="E"><h3>Hair dryer</h3><p>₹599</p></div>
+    <div class="product" category="C"><h3>Pants</h3><p>₹899</p></div>
+</div>
+
+</body>
+</html>
+<script src="sp.js"></script>

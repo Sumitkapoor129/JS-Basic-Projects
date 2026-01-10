@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            background-color: rgb(203, 201, 198);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: rgb(102, 102, 102);
+            width: 330px;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            
+        }
+
+        .display {
+            background-color: rgb(0, 0, 0);
+            color: aliceblue;
+            font-size: 30px;
+            text-align: right;
+            height: 80px;
+            border: none;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 310px;
+            
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .button {
+            width: 65px;
+            height: 65px;
+            background-color: rgb(118, 118, 118);
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .button.operator {
+            background-color: rgb(254, 147, 16);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="display" readonly value="">
+        <div class="row">
+            <button class="button operator action">AC</button>
+            <button class="button operator action">DE</button>
+            <button class="button operator togg">+/-</button>
+            <button class="button operator num">/</button>
+        </div>
+        <div class="row">
+            <button class="button num">7</button>
+            <button class="button num">8</button>
+            <button class="button num">9</button>
+            <button class="button operator num">*</button>
+        </div>
+        <div class="row">
+            <button class="button num">4</button>
+            <button class="button num">5</button>
+            <button class="button num">6</button>
+            <button class="button operator num">-</button>
+        </div>
+        <div class="row">
+            <button class="button num">1</button>
+            <button class="button num">2</button>
+            <button class="button num">3</button>
+            <button class="button operator num">+</button>
+        </div>
+        <div class="row">
+            <button class="button operator num">%</button>
+            <button class="button num">0</button>
+            <button class="button num">.</button>
+            <button class="button operator action">=</button>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+
+<script src="calc.js"></script>

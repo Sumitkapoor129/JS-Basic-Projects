@@ -1,0 +1,19 @@
+.heading{
+    font-size: 50px;
+    font-weight: 800;
+    font-style: normal;
+    color: wheat;
+    align-self: center;
+    justify-self: center;
+    padding-top: 3%;
+}
+.input{
+    font-size: x-large;
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(34, 28, 16);
+    align-self: center;
+    justify-self: center;
+    padding-top: 3%;
+    text-align: center;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        #container{
+            position: relative;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            overflow: hidden;
+            margin: 10% auto;
+            
+        }
+        .btn{
+            position: relative;
+            background-color: rgba(255, 64, 64, 0);
+            border-radius: 300px;
+            display: inline-flex;
+            color: rgb(218, 91, 91);
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border: 0px solid black;
+            font-size: x-large;
+        }
+        .image{
+            width: 50vw;
+            /* overflow: hidden; */
+            height: 50vh;
+            
+            display:inline-flex;
+            position: relative;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="left" class="btn" value=><</button>
+
+        <img src="./Images/Wallpaper.jpeg" alt="OOPS" class="image">
+
+        <button id="right"  class="btn">></button>
+    </div>
+</body>
+</html>
+<script>
+const images=["./Images/Wallpaper.jpeg","./Images/City.png","./Images/Earth.jpg","./Images/Mountains.jpg"]
+let n=0;
+const btnr=document.querySelector('#right')
+const btnl=document.querySelector('#left')
+const img=document.querySelector('.image')
+console.log(img);
+
+btnr.addEventListener("click",()=>{
+    console.log("R");
+    
+    n++;
+    if(!(n<images.length))n=0;
+    img.setAttribute("src",images[n]);
+
+},false)
+btnl.addEventListener("click",()=>{
+    n--;
+    if(!(n>=0))n=images.length-1;
+
+    img.setAttribute("src",images[n]);
+},false)
+
+</script>
