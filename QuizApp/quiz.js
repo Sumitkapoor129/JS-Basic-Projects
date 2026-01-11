@@ -10,6 +10,7 @@ const pop_up=document.querySelector(".pop");
 const quizstruct=document.querySelector(".container")
 const pop_retry=document.querySelector(".retry-btn")
 const pop_continue=document.querySelector(".continue-btn")
+const coins=document.querySelector(".coins")
 
 const questions = [
     {question: "What is the capital of India?",
@@ -194,7 +195,9 @@ choices_cont.addEventListener("click",(e)=>{
             pop_up.classList.toggle("hidden");
             document.querySelector(".pop-message").textContent="YOU LOST !"
             console.log(pop_up);
-            
+            if(coins.textContent.trim()<50){
+                pop_continue.style.backgroundColor="red";
+            }
             // setTimeout(()=>{
             //     warning.classList.toggle("hidden")
             //     reset()
@@ -213,6 +216,17 @@ pop_retry.addEventListener("click",(e)=>{
     displayque(question_number)
     startTimer()
     started=true;
-
-
 })
+pop_continue.addEventListener("click",(e)=>{
+    if(coins.textContent.trim()>=50){
+        coins.children[1].textContent =coins.textContent.trim()- 50;
+        pop_up.classList.toggle("hidden");
+        quizstruct.classList.toggle("blur")
+        timer.style.color="black"
+        displayque(question_number)
+        startTimer()
+    }
+    started=true;
+})
+console.log(coins.textContent.trim());
+

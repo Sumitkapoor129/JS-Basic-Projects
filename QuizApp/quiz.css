@@ -180,8 +180,9 @@
 }
 .pop-buttons{
     background-color: blue;
-    width: 90px;
+    width: 130px;
     height: 30px;
-    margin: 4% 10%;
+    margin: 4% 8%;
     border-radius: 30px; 
+    color: antiquewhite;
 }
