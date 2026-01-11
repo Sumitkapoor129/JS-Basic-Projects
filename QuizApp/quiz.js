@@ -6,6 +6,11 @@ const Question_Box=document.querySelector(".que")
 const choices=document.querySelectorAll(".opt")
 const choices_cont=document.querySelector(".Q-Options")
 const Question_No =document.querySelector(".heading-q")
+const pop_up=document.querySelector(".pop");
+const quizstruct=document.querySelector(".container")
+const pop_retry=document.querySelector(".retry-btn")
+const pop_continue=document.querySelector(".continue-btn")
+
 const questions = [
     {question: "What is the capital of India?",
      options: ["Mumbai", "New Delhi", "Kolkata", "Chennai"],
@@ -167,7 +172,7 @@ start.addEventListener("click",(e)=>{
 })
 
 choices_cont.addEventListener("click",(e)=>{
-    if(started){
+    if(started && e.target.classList.contains("opt")){
         const correct=questions[question_number].correctIndex
 
         if(e.target.textContent==questions[question_number].options[correct]){
@@ -180,9 +185,34 @@ choices_cont.addEventListener("click",(e)=>{
                 warning.classList.toggle("hidden")
                 startTimer();
                 displayque(question_number)
-            },2000);
+                start.textContent="Reset"
+            },1000);
+        }
+        else{
+            pauseTimer()
+            quizstruct.classList.toggle("blur")
+            pop_up.classList.toggle("hidden");
+            document.querySelector(".pop-message").textContent="YOU LOST !"
+            console.log(pop_up);
+            
+            // setTimeout(()=>{
+            //     warning.classList.toggle("hidden")
+            //     reset()
+            //     start.textContent="Retry"
+            //     started=false;
+            // },1000);
         }
     }
 })
 
+pop_retry.addEventListener("click",(e)=>{
+    pop_up.classList.toggle("hidden");
+    quizstruct.classList.toggle("blur")
+    timer.style.color="black"
+    question_number=0;
+    displayque(question_number)
+    startTimer()
+    started=true;
 
+
+})
