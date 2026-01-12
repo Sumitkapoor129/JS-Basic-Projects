@@ -12,6 +12,9 @@ const pop_retry=document.querySelector(".retry-btn")
 const pop_continue=document.querySelector(".continue-btn")
 const coins=document.querySelector(".coins")
 
+
+let coins_count=document.querySelector(".coin-count")
+
 const questions = [
     {question: "What is the capital of India?",
      options: ["Mumbai", "New Delhi", "Kolkata", "Chennai"],
@@ -94,8 +97,15 @@ const questions = [
      correctIndex: 1
     }
 ];
-
-
+const asked=[];
+function randomQue(){
+    let num=Math.floor(Math.random()*questions.length)
+    asked.forEach(ele=>{
+        if(num==ele)num=randomQue();
+    })
+    asked.push(num);
+    return num;
+}
 
 const clockhtml=timer.innerHTML
 
@@ -133,7 +143,7 @@ interval=setInterval(()=>{
 }
 function displayque(num){
     if(started){
-        Question_No.textContent=`Question ${num+1}`
+        Question_No.textContent=`Question ${question_number+1}`
         Question_Box.textContent=questions[num].question;
         let a=0
         choices.forEach(choice=>{
@@ -158,12 +168,14 @@ function pauseTimer(){
     timer.innerHTML=clockhtml 
 }
 
-
+let Q_num=randomQue();
 start.addEventListener("click",(e)=>{
     if(!started){
+    
     start.textContent="Reset"
     startTimer()
-    displayque(question_number)}
+    
+    displayque(Q_num)}
     else{
         started=false;
         start.textContent="Start"
@@ -174,9 +186,12 @@ start.addEventListener("click",(e)=>{
 
 choices_cont.addEventListener("click",(e)=>{
     if(started && e.target.classList.contains("opt")){
-        const correct=questions[question_number].correctIndex
+        const correct=questions[Q_num].correctIndex
 
-        if(e.target.textContent==questions[question_number].options[correct]){
+        if(e.target.textContent==questions[Q_num].options[correct]){
+            coins_count.textContent-=(-10);
+            console.log(coins_count);
+            Q_num=randomQue()
             pauseTimer()
             warning.textContent="CORRECT"
             warning.style.color="Green"
@@ -185,7 +200,7 @@ choices_cont.addEventListener("click",(e)=>{
             setTimeout(()=>{
                 warning.classList.toggle("hidden")
                 startTimer();
-                displayque(question_number)
+                displayque(Q_num)
                 start.textContent="Reset"
             },1000);
         }
@@ -213,7 +228,8 @@ pop_retry.addEventListener("click",(e)=>{
     quizstruct.classList.toggle("blur")
     timer.style.color="black"
     question_number=0;
-    displayque(question_number)
+    Q_num=randomQue()
+    displayque(Q_num)
     startTimer()
     started=true;
 })
@@ -223,7 +239,7 @@ pop_continue.addEventListener("click",(e)=>{
         pop_up.classList.toggle("hidden");
         quizstruct.classList.toggle("blur")
         timer.style.color="black"
-        displayque(question_number)
+        displayque(Q_num)
         startTimer()
     }
     started=true;
