@@ -11,10 +11,12 @@ const quizstruct=document.querySelector(".container")
 const pop_retry=document.querySelector(".retry-btn")
 const pop_continue=document.querySelector(".continue-btn")
 const coins=document.querySelector(".coins")
+const score_box=document.querySelector(".score")
+const highest=document.querySelector(".highest")
 
 
 let coins_count=document.querySelector(".coin-count")
-
+let score=0;
 const questions = [
     {question: "What is the capital of India?",
      options: ["Mumbai", "New Delhi", "Kolkata", "Chennai"],
@@ -106,6 +108,22 @@ function randomQue(){
     asked.push(num);
     return num;
 }
+function loadHighestScore(){
+    const score=localStorage.getItem("highest");
+highest.textContent=score?`Highest - ${score}`:"Highest - 0"
+}
+loadHighestScore()
+function loadScore(){
+    score_box.textContent=`Score - ${score}`
+}
+
+function compareScore(){
+    if(score >localStorage.getItem("highest")){
+        localStorage.setItem("highest",score)
+        loadHighestScore();
+    }
+}
+
 
 const clockhtml=timer.innerHTML
 
@@ -126,10 +144,8 @@ function startTimer(){
     time--;
 
 interval=setInterval(()=>{
-        if(time==-1){
-            clearInterval(interval)
-            timer.innerHTML=clockhtml; 
-            warning.classList.remove("hidden")
+        if(time==0){
+            lost()
         }
         
         else{
@@ -167,6 +183,16 @@ function pauseTimer(){
     clearInterval(interval)
     timer.innerHTML=clockhtml 
 }
+function lost(){
+            pauseTimer()
+            quizstruct.classList.toggle("blur")
+            pop_up.classList.toggle("hidden");
+            document.querySelector(".pop-message").textContent="YOU LOST !"
+            console.log(pop_up);
+            if(coins.textContent.trim()<50){
+                pop_continue.style.backgroundColor="red";
+            }
+}
 
 let Q_num=randomQue();
 start.addEventListener("click",(e)=>{
@@ -189,6 +215,9 @@ choices_cont.addEventListener("click",(e)=>{
         const correct=questions[Q_num].correctIndex
 
         if(e.target.textContent==questions[Q_num].options[correct]){
+            score+=10;
+            loadScore()
+            compareScore()
             coins_count.textContent-=(-10);
             console.log(coins_count);
             Q_num=randomQue()
@@ -205,14 +234,7 @@ choices_cont.addEventListener("click",(e)=>{
             },1000);
         }
         else{
-            pauseTimer()
-            quizstruct.classList.toggle("blur")
-            pop_up.classList.toggle("hidden");
-            document.querySelector(".pop-message").textContent="YOU LOST !"
-            console.log(pop_up);
-            if(coins.textContent.trim()<50){
-                pop_continue.style.backgroundColor="red";
-            }
+            lost()
             // setTimeout(()=>{
             //     warning.classList.toggle("hidden")
             //     reset()
