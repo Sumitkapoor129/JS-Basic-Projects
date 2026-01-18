@@ -77,12 +77,6 @@
       justify-content: center;
     }
 
-    .agree{
-      padding: 10px 24px;
-      font-size: 14px;
-      color: #ddd;
-    }
-
     .signup-btn{
       width: 70%;
       display: block;
@@ -103,6 +97,23 @@
       background: linear-gradient(135deg, #7b1fe0, #ffd700);
       transform: translateY(-2px);
     }
+
+    .login-text{
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .login-text a{
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-text a:hover{
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -115,22 +126,22 @@
 
       <div class="text username-head">Username</div>
       <div class="input-group">
-        <input type="text" class="fields username" placeholder="Enter Username">
+        <input type="text" class="fields username" name="username" placeholder="Enter Username">
       </div>
 
       <div class="text email-head">Email Id</div>
       <div class="input-group">
-        <input type="text" class="fields email" placeholder="Enter Email Id">
+        <input type="text" class="fields email" name="email" placeholder="Enter Email Id">
       </div>
 
       <div class="text contact-head">Contact No.</div>
       <div class="input-group">
-        <input type="text" class="fields contact" placeholder="Enter Contact Number">
+        <input type="text" class="fields contact" name="Contact" placeholder="Enter Contact Number">
       </div>
 
       <div class="text pass-head">Password</div>
       <div class="input-group">
-        <input type="password" class="fields password" placeholder="Enter Password">
+        <input type="password" class="fields password" name="password" placeholder="Enter Password">
         <button type="button" class="btn show-pass">👁</button>
       </div>
 
@@ -140,12 +151,11 @@
         <button type="button" class="btn show-conf-pass">👁</button>
       </div>
 
-      <div class="agree">
-        <input type="checkbox" class="checkboc">
-        <span>I Agree With The Terms And Condition</span>
-      </div>
-
       <button type="submit" class="signup-btn">Signup</button>
+
+      <div class="login-text">
+        Already a user? <a href="login.html">Login</a>
+      </div>
 
     </form>
   </div>

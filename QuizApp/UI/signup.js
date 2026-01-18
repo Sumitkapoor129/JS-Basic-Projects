@@ -53,27 +53,29 @@ username.addEventListener("input",(e)=>{
 })
 
 form.addEventListener("submit",(e)=>{
+    e.preventDefault();
     if(passhead.children[0]){
         passhead.children[0].remove()
         }
     if(confpasshead.children[0]){
         confpasshead.children[0].remove()
         }
-    if(!emailValidation.test(email.value)){
-        if(emailhead.children[0]){
-            emailhead.children[0].remove()
-        }
-        warning("Enter a valid Email Address",emailhead)
-        e.preventDefault();
-    }
-    if(!contactValidarion.test(contact.value)){
-         if(contacthead.children[0]){
+    if(contacthead.children[0]){
             contacthead.children[0].remove()
             console.log("contact removed");
             
         }
+    if(emailhead.children[0]){
+        emailhead.children[0].remove()
+    }
+    if(!emailValidation.test(email.value)){
+        warning("Enter a valid Email Address",emailhead)
+        
+    }
+    if(!contactValidarion.test(contact.value)){
+         
         warning("Enter a valid Contact No.",contacthead);
-        e.preventDefault();
+        
     }
    
     if(!strongPassValidator.test(pass.value)){
@@ -84,13 +86,34 @@ form.addEventListener("submit",(e)=>{
             warning("Password Is Too weak",passhead);
          }
         
-        e.preventDefault();
+        
     }
 
     if(strongPassValidator.test(pass.value) && confpass.value !== pass.value){
         warning("Password Does Not Match",confpasshead);
-        e.preventDefault();
+        
     }
+    console.log(form.username.value);
+    
+    const data=fetch('http://127.0.0.1:5000/quiz/signup',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+            name:form.username.vlaue,
+            email:form.email.value,
+            password:form.password.value,
+            contact:form.Contact.value
+        })
+    }).then(response=>{
+        if(response.ok){
+            window.location.href="Quiz.html"
+        }
+    })
+      
+console.log("j");
+
 })
 
 

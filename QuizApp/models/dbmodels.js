@@ -5,7 +5,8 @@ import bcrypt from "bcryptjs";
 const Userschema=new mongoose.Schema({
     name:String,
     username:String,
-    emial:String,
+    email:String,
+    contact:Number,
     password:String,
     isverified:Boolean,
 
