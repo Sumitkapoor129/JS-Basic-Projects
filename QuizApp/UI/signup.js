@@ -108,7 +108,7 @@ form.addEventListener("submit",(e)=>{
         })
     }).then(response=>{
         if(response.ok){
-            window.location.href="Quiz.html"
+            window.location.href="Login.html"
         }
     })
       

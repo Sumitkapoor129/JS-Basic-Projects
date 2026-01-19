@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
 app.use(cors({
-        origin:"http://10.14.42.159:5500",
+        origin:"http://10.14.6.15:5500",
         methods:['get','post','delete'],
         allowedHeaders:['Content-Type','Authorization']
     }))

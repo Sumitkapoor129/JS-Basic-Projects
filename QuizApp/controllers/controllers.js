@@ -21,20 +21,27 @@ export const signup=async (req,res)=>{
 
 export const login=async(req,res)=>{
   try {
+    console.log("hy");
     const {email ,password}=req.body;
+    console.log("hy");
     const user=await User.findOne({email});
+    console.log("hy");
        if(!user){
            return res.status(400).json({msg:"User Does Not exist Exists"})
+           
        }
-       const comp=bcrypt.compare(password,user.password);
+       const comp= password==user.password;
+       console.log("hy");
        if(!comp){
-        return res.status(400).json({msg:"Invalid User"})
+        return res.status(400).json({msg:"Invalid User"})     
        }
-       const token = jwt.sign({email:user.email},"sumit",{expiresIn:"24h"})
-       res.cookie("token",token)
-       return res.status(200);
+       console.log("hy");
+       const token = await jwt.sign({email:user.email},"sumit",{expiresIn:"24h"})
+      
+       console.log(token);
+      return res.status(200).json({msg:"Success",token:token});
   } catch (error) {
-    return res.status(401).json({msg:ifError})
+    return res.status(401).json({msg:error})
   }
 
 }
