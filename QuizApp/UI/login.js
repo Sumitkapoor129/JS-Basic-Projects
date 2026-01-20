@@ -12,6 +12,7 @@ form.addEventListener("submit", async (e) => {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials:"include",
             body: JSON.stringify({
                 email: form.email.value,
                 password: form.password.value
@@ -20,7 +21,8 @@ form.addEventListener("submit", async (e) => {
         if (response.ok) {
         const data = await response.json();
         console.log("data:", data);
-        document.cookie=`token=${data.token}`
+        localStorage.setItem("token",data.token);
+        // document.cookie=`token=${data.token}`
             window.location.href = "Quiz.html";
         }
         else{

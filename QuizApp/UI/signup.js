@@ -70,11 +70,12 @@ form.addEventListener("submit",(e)=>{
     }
     if(!emailValidation.test(email.value)){
         warning("Enter a valid Email Address",emailhead)
-        
+        return
     }
     if(!contactValidarion.test(contact.value)){
          
         warning("Enter a valid Contact No.",contacthead);
+        return
         
     }
    
@@ -85,13 +86,13 @@ form.addEventListener("submit",(e)=>{
          else{
             warning("Password Is Too weak",passhead);
          }
-        
+        return
         
     }
 
     if(strongPassValidator.test(pass.value) && confpass.value !== pass.value){
         warning("Password Does Not Match",confpasshead);
-        
+        return
     }
     console.log(form.username.value);
     
@@ -101,7 +102,7 @@ form.addEventListener("submit",(e)=>{
             'Content-Type':'application/json'
         },
         body:JSON.stringify({
-            name:form.username.vlaue,
+            name:form.username.value,
             email:form.email.value,
             password:form.password.value,
             contact:form.Contact.value

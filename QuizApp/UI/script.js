@@ -15,8 +15,40 @@ const score_box=document.querySelector(".score")
 const highest=document.querySelector(".highest")
 const signup=document.querySelector(".login-btn");
 
+
+let isloggedin=false;
+
+(function verifylogin(){
+    const tokenn=localStorage.getItem("token");
+    if(!tokenn){
+        return
+    }
+    const data=fetch('http://127.0.0.1:5000/quiz/verify', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials:"include",
+            body: JSON.stringify({
+                token:tokenn
+            })
+        }).then(response=>{
+            if(response.ok){
+            isloggedin=true;
+            console.log(isloggedin);
+            return response.json();
+        } 
+        }).then(data=>{
+            console.log(data);
+            document.querySelector(".login-btn").textContent=data.name;
+        })
+        
+})()
+
+
 let coins_count=document.querySelector(".coin-count")
 let score=0;
+
 const questions = [
     {question: "What is the capital of India?",
      options: ["Mumbai", "New Delhi", "Kolkata", "Chennai"],
