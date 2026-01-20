@@ -15,6 +15,8 @@ const score_box=document.querySelector(".score")
 const highest=document.querySelector(".highest")
 const signup=document.querySelector(".login-btn");
 
+const profile=document.createElement("span");
+profile.className="profile-info";
 
 let isloggedin=false;
 
@@ -40,7 +42,10 @@ let isloggedin=false;
         } 
         }).then(data=>{
             console.log(data);
-            document.querySelector(".login-btn").textContent=data.name;
+            document.querySelector(".login-btn").remove();
+            profile.textContent=data.name;
+            document.querySelector('.profile').appendChild(profile);
+
         })
         
 })()
@@ -165,7 +170,7 @@ let started=false;
 let interval;
 let question_number=0;
 function startTimer(){
-    timer.style.color="black"
+    timer.style.color="#00ffff"
     started=true;
     let time=15; 
     if(interval)clearInterval(interval)
@@ -281,6 +286,8 @@ pop_retry.addEventListener("click",(e)=>{
     pop_up.classList.toggle("hidden");
     quizstruct.classList.toggle("blur")
     timer.style.color="black"
+    score=0;
+    loadScore();
     question_number=0;
     Q_num=randomQue()
     displayque(Q_num)

@@ -58,5 +58,5 @@ export const verify=async(req,res)=>{
   if(!user)res.status(400).json({msg:"Invalid token"});
   console.log(user);
   res.status(200).json({name:user.name})
-  
+
 }
