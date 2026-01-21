@@ -185,10 +185,26 @@ box-shadow: 0 8px 30px rgba(0, 255, 255, 0.15);
     letter-spacing: 2px;
 }
 .opt:hover{
-     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+     background: linear-gradient(135deg, #0f2027, #45859a, #2c5364);
     cursor: pointer;
     /* transform: scale(1.04); */
-
+}
+.correct{
+    /* border: 1px solid black; */
+    margin: 0px 4px 19px 19px;
+    height: 40px;
+    width: 380px;
+    border-radius: 30px;
+    text-align: center;
+     background: rgba(33, 226, 26, 0.6);
+     color: #8fbfcc;
+    font-size: 29px;
+    letter-spacing: 2px;
+}
+.correct:hover{
+     background: linear-gradient(135deg, #00cb0e, #15b80f, #006f00);
+    cursor: pointer;
+    /* transform: scale(1.04); */
 }
 
 .pop{

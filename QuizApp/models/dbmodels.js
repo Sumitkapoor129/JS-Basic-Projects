@@ -6,11 +6,11 @@ const Userschema=new mongoose.Schema({
     name:String,
     username:String,
     email:String,
-    contact:{
+    coins:{
         type:Number,
-        default:0
+        default:200
     },
-    coins:Number,
+    contact:Number,
     password:String,
     isverified:Boolean,
 

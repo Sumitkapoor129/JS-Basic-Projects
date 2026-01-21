@@ -15,12 +15,18 @@ const score_box=document.querySelector(".score")
 const highest=document.querySelector(".highest")
 const signup=document.querySelector(".login-btn");
 
+const coins_count=document.querySelector(".coin-count")
+
+
+let coin=0;
+let email="";
+
 const profile=document.createElement("span");
 profile.className="profile-info";
 
 let isloggedin=false;
 
-(function verifylogin(){
+function verifylogin(){
     const tokenn=localStorage.getItem("token");
     if(!tokenn){
         return
@@ -42,16 +48,34 @@ let isloggedin=false;
         } 
         }).then(data=>{
             console.log(data);
+
             document.querySelector(".login-btn").remove();
             profile.textContent=data.name;
             document.querySelector('.profile').appendChild(profile);
+            coins_count.textContent=data.coins;
+            coin=data.coins;
+            email=data.email;
 
         })
         
-})()
+}
+verifylogin();
+
+function setcoin(){
+    fetch('http://127.0.0.1:5000/quiz/setcoins', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials:"include",
+            body: JSON.stringify({
+                coins:coin,
+                email:email
+            })
+        })
+}
 
 
-let coins_count=document.querySelector(".coin-count")
 let score=0;
 
 const questions = [
@@ -252,18 +276,20 @@ choices_cont.addEventListener("click",(e)=>{
         const correct=questions[Q_num].correctIndex
 
         if(e.target.textContent==questions[Q_num].options[correct]){
+            e.target.classList.toggle("correct");
             score+=10;
             loadScore()
             compareScore()
             coins_count.textContent-=(-10);
+            coin+=10;
             console.log(coins_count);
             Q_num=randomQue()
             pauseTimer()
-            warning.textContent="CORRECT"
-            warning.style.color="Green"
-            warning.classList.toggle("hidden")
             question_number++;
+            setcoin();
+            verifylogin()
             setTimeout(()=>{
+                e.target.classList.toggle("correct");
                 warning.classList.toggle("hidden")
                 startTimer();
                 displayque(Q_num)
@@ -297,6 +323,9 @@ pop_retry.addEventListener("click",(e)=>{
 pop_continue.addEventListener("click",(e)=>{
     if(coins.textContent.trim()>=50){
         coins.children[1].textContent =coins.textContent.trim()- 50;
+        coin-=50;
+        setcoin();
+        verifylogin();
         pop_up.classList.toggle("hidden");
         quizstruct.classList.toggle("blur")
         timer.style.color="black"

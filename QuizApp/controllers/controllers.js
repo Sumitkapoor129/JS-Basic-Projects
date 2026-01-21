@@ -57,6 +57,23 @@ export const verify=async(req,res)=>{
   const user=await User.findOne({email:data.email});
   if(!user)res.status(400).json({msg:"Invalid token"});
   console.log(user);
-  res.status(200).json({name:user.name})
+  res.status(200).json({name:user.name,coins:user.coins,contact:user.contact,email:user.email})
 
 }
+export const setcoins=async(req,res)=>{
+ try {
+   const {email,coins}=req.body;
+   const user =await User.findOne({email});
+   if(!user){
+     res.status(401).json({msg:"User not found"})
+   }
+   user.coins=coins;
+   await user.save();
+   console.log(user);
+   
+   res.status(200).json({msg:"Success"});
+ } catch (error) {
+  res.status(401).json({msg:"Error while accessing database"})
+ }
+}
+
